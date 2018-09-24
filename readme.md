@@ -120,7 +120,7 @@ example:
 ### Animation Parameters
 
 | Key | Value Type | Example | Description |
-| ----------| --- | ---------- | ---------- | -------- | --------- |
+| ----------| --- | ---------- | ---------- |
 | duration | Number | 0.5 | How long it takes for animation to finish  |
 | movement | Number[] ([x, y]) | [100, -100] | Direction of animation defined in X and Y |
 | fade | Boolean (true / false) | true | Whether the element is fading from 0 to its original opacity |
