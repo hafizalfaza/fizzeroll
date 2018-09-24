@@ -1,3 +1,4 @@
+
 (function(){
   window['Fizzeroll'] = {
     variables: {
@@ -56,14 +57,14 @@
     
         }
       },
+      
       runAnimation: function(el, animationData) {
         
         var self  = this
     
-        if(el.className.indexOf('fz-active') < 0 && el.className.indexOf('fz-animating') < 0) {
+        if(el.className.indexOf('fz-active') < 0) {
           
           el.classList.add('fz-active')
-          el.classList.add('fz-animating')
     
           if (animationData.type === 'stagger') {
     
@@ -233,7 +234,40 @@
           }
           
         }
-    
+  
+        if(opts.ease) {
+  
+          if(opts.ease[0] === 'Custom' || opts.ease[0] === 'CustomEase') {
+  
+            self.tweenAnimation['ease'] = CustomEase.create("custom", opts.ease[2])
+            
+          } else if(opts.ease[0] === 'Rough' || opts.ease[0] === 'RoughEase'){
+  
+            self.tweenAnimation['ease'] = RoughEase.ease.eval([opts.ease[2]])
+  
+          } else if(opts.ease[0] === 'SlowMo'){
+            
+            self.tweenAnimation['ease'] = RoughEase.ease.eval([opts.ease[2]])
+            
+          } else if(opts.ease[0] === 'Stepped' || opts.ease[0] === 'SteppedEase') {
+  
+            self.tweenAnimation['ease'] = SteppedEase.eval([opts.ease[2]])
+  
+          } else {
+  
+            if(opts.ease[2]) {
+  
+              self.tweenAnimation['ease'] = eval(opts.ease[0])[opts.ease[1]].eval([opts.ease[2]])
+              
+            } else {
+  
+              self.tweenAnimation['ease'] = eval(opts.ease[0])[opts.ease[1]]
+  
+            }
+          }
+  
+        }
+  
         if(opts.fade) {
           self.tweenAnimation['opacity'] = 0
         }
@@ -252,8 +286,6 @@
     
         self.tweenAnimation['onComplete'] = function(){
           el.classList.add('fz-done')
-          el.classList.add('fz-active')
-          el.classList.remove('fz-animating')
         }
     
         if(opts.allowMobile) {
@@ -459,7 +491,7 @@
       fizzeroll: function(self) {
         
         self.variables.fzElements.forEach((el, i) => {
-
+  
             if(JSON.parse(el.getAttribute("fizzeroll")).allowMobile) {
                 
                 var rect = el.getBoundingClientRect();
@@ -476,11 +508,11 @@
           
           
                 self.variables.checkIfInViewPort(el, self.variables.animationData[i], rect)
-
+  
             } else {
                 
                 if(!self.variables.isMobile){
-
+  
                     var rect = el.getBoundingClientRect();
                     
                     if(self.variables.animationData.length < self.variables.fzElements.length) {
@@ -495,7 +527,7 @@
               
               
                     self.variables.checkIfInViewPort(el, self.variables.animationData[i], rect)
-
+  
                 }
             }
     

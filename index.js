@@ -58,14 +58,14 @@ export default {
   
       }
     },
+    
     runAnimation: function(el, animationData) {
       
       var self  = this
   
-      if(el.className.indexOf('fz-active') < 0 && el.className.indexOf('fz-animating') < 0) {
+      if(el.className.indexOf('fz-active') < 0) {
         
         el.classList.add('fz-active')
-        el.classList.add('fz-animating')
   
         if (animationData.type === 'stagger') {
   
@@ -235,7 +235,40 @@ export default {
         }
         
       }
-  
+
+      if(opts.ease) {
+
+        if(opts.ease[0] === 'Custom' || opts.ease[0] === 'CustomEase') {
+
+          self.tweenAnimation['ease'] = CustomEase.create("custom", opts.ease[2])
+          
+        } else if(opts.ease[0] === 'Rough' || opts.ease[0] === 'RoughEase'){
+
+          self.tweenAnimation['ease'] = RoughEase.ease.eval([opts.ease[2]])
+
+        } else if(opts.ease[0] === 'SlowMo'){
+          
+          self.tweenAnimation['ease'] = RoughEase.ease.eval([opts.ease[2]])
+          
+        } else if(opts.ease[0] === 'Stepped' || opts.ease[0] === 'SteppedEase') {
+
+          self.tweenAnimation['ease'] = SteppedEase.eval([opts.ease[2]])
+
+        } else {
+
+          if(opts.ease[2]) {
+
+            self.tweenAnimation['ease'] = eval(opts.ease[0])[opts.ease[1]].eval([opts.ease[2]])
+            
+          } else {
+
+            self.tweenAnimation['ease'] = eval(opts.ease[0])[opts.ease[1]]
+
+          }
+        }
+
+      }
+
       if(opts.fade) {
         self.tweenAnimation['opacity'] = 0
       }
@@ -254,8 +287,6 @@ export default {
   
       self.tweenAnimation['onComplete'] = function(){
         el.classList.add('fz-done')
-        el.classList.add('fz-active')
-        el.classList.remove('fz-animating')
       }
   
       if(opts.allowMobile) {
@@ -368,6 +399,7 @@ export default {
             self.animation.push(self.staggerAnimation)
   
           })
+  
   
           self.animationDelay = self.staggerDelay
           
