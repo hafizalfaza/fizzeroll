@@ -119,21 +119,22 @@ example:
 
 ### Animation Parameters
 
-Key | Value Type | Example | Description
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-duration | Number | 0.5 | How long it takes for animation to finish | 
-movement | Number[] ([x, y]) | [100, -100] | Direction of animation defined in X and Y |
-fade | Boolean (true / false) | true | Whether the element is fading from 0 to its original opacity |
-scale | Number | 0.5 | Whether the element is scaling to its original scale |
-type | String | "stagger" | Type of animation |
-splitByWord | Boolean (true / false) | true | Whether stagger animation split text by word|
-ease | String[] ([name, style, config]) | ['Elastic', 'easeOut', 'config(1, 0.3)'] | Ease style (Check GSAP website for more ease style) |
-allowMobile | Boolean (true / false) | true | Whether animation runs on mobile |
-delay | Number | 2 | How long it takes before animation starts after activation |
-offset | Number | 200 | How far it takes (scroll) before animation is activated |
-staggerDelay | Number | 0.2 | How long it takes between staggered child |
-playback | Boolean | true | Whether animation replays after element is below the viewport and then back in the viewport |
-parallax | Number | 1 | How fast the element moves in parallax fashion as user scrolls |
+| Timestamp | URL | User Agent | IP Address | Language | Hit Count |
+| ----------| --- | ---------- | ---------- | -------- | --------- |
+| duration | Number | 0.5 | How long it takes for animation to finish  |
+| movement | Number[] ([x, y]) | [100, -100] | Direction of animation defined in X and Y |
+| fade | Boolean (true / false) | true | Whether the element is fading from 0 to its original opacity |
+| scale | Number | 0.5 | Whether the element is scaling to its original scale |
+| type | String | "stagger" | Type of animation |
+| splitByWord | Boolean (true / false) | true | Whether stagger animation split text by word|
+| ease | String[] ([name, style, config]) | ['Elastic', 'easeOut', 'config(1, 0.3)'] | Ease style (Check GSAP website for more ease style) |
+| allowMobile | Boolean (true / false) | true | Whether animation runs on mobile |
+| delay | Number | 2 | How long it takes before animation starts after activation |
+| offset | Number | 200 | How far it takes (scroll) before animation is activated |
+| staggerDelay | Number | 0.2 | How long it takes between staggered child |
+| playback | Boolean | true | Whether animation replays after element is below the viewport and then back in the viewport |
+| parallax | Number | 1 | How fast the element moves in parallax fashion as user scrolls |
+
 
 ## Author
 
