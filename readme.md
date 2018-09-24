@@ -119,7 +119,7 @@ example:
 
 ### Animation Parameters
 
-| Timestamp | URL | User Agent | IP Address | Language | Hit Count |
+| Key | Value Type | Example | Description |
 | ----------| --- | ---------- | ---------- | -------- | --------- |
 | duration | Number | 0.5 | How long it takes for animation to finish  |
 | movement | Number[] ([x, y]) | [100, -100] | Direction of animation defined in X and Y |
